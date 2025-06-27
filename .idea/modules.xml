@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/TW_Assignments/TW_Assignments.iml" filepath="$PROJECT_DIR$/TW_Assignments/TW_Assignments.iml" />
       <module fileurl="file://$PROJECT_DIR$/thoughtworks.iml" filepath="$PROJECT_DIR$/thoughtworks.iml" />
     </modules>
   </component>
