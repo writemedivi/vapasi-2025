@@ -1,3 +1,5 @@
+package oops;
+
 public class Ram {
 
     private int size;

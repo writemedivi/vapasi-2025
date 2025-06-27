@@ -1,3 +1,5 @@
+package oops;
+
 public class Laptop {
     final  String logo = "Mac";
 
@@ -16,5 +18,5 @@ public class Laptop {
                 "Hard disk type - " + hardDisk.getType() ) ;
     }
 
-    
+
 }

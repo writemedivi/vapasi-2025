@@ -1,3 +1,5 @@
+package oops;
+
 public class Processor {
 
     private String model;

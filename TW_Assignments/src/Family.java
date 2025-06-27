@@ -1,5 +1,3 @@
-package oops;
-
 class GrandParent {
 
     String familyName ;

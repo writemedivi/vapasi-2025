@@ -1,3 +1,5 @@
+package oops;
+
 public class HardDisk {
 
     private String size;

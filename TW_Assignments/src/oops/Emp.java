@@ -1,4 +1,4 @@
-
+package oops;
 //Entity class
 
 public class Emp {
