@@ -22,7 +22,7 @@ public class Ram {
 
     @Override
     public String toString() {
-        return "Ram size : " + getSize() + " and speed in GHZ: " + getSpeedInGHZ() ;
+        return "Ram size : " + getSize() + ", Speed in GHZ: " + getSpeedInGHZ() ;
     }
 
 }
