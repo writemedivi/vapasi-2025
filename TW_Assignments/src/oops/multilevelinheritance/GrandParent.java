@@ -6,7 +6,6 @@ class GrandParent {
     int medicalHistory;
 
     GrandParent() {
-
     }
 
     GrandParent(String familyName, int medicalHistory) {

@@ -10,9 +10,6 @@ public class Child extends Parent {
         super(parentName, occupation, grantParentName, medicalHistoryCount);
         this.childName = childName;
         this.education = education ;
-        super.parentName = parentName ;
-        super.occupation = occupation;
-
         System.out.println("Child Constructor Called ..");
         showEntireFamilyDetail();
     }
