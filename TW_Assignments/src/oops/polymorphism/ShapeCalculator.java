@@ -7,8 +7,11 @@ public class ShapeCalculator {
         shape[0] = new Circle(4);
         shape[1] = new Rectangle(8, 4);
         shape[2] = new Triangle(2.1f, 4, 5);
+        displayShapeDetail(shape);
+    }
 
-        for (Shape s : shape) {
+    private static void displayShapeDetail(Shape[] arrShape){
+        for (Shape s : arrShape) {
             String shapeName = s.getClass().getSimpleName();
             if(s instanceof Rectangle){
                 if(((Rectangle) s).isSquare){
