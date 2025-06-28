@@ -1,6 +1,7 @@
-package oops;
+package oops.Association;
 
 public class Ram {
+
 
     private int size;
     private int speedInGHZ ;
@@ -9,4 +10,14 @@ public class Ram {
         this.size = size;
         this.speedInGHZ = speedInGHZ ;
     }
+
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getSpeedInGHZ() {
+        return speedInGHZ;
+    }
+
 }

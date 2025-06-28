@@ -1,4 +1,4 @@
-package oops;
+package oops.Association;
 
 public class HardDisk {
 
@@ -14,15 +14,8 @@ public class HardDisk {
         return size;
     }
 
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 }
