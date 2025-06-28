@@ -20,4 +20,9 @@ public class Ram {
         return speedInGHZ;
     }
 
+    @Override
+    public String toString() {
+        return "Ram size : " + getSize() + " and speed in GHZ: " + getSpeedInGHZ() ;
+    }
+
 }

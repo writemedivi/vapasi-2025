@@ -10,12 +10,10 @@ public class HardDisk {
         this.type = type;
     }
 
-    public String getSize() {
-        return size;
-    }
 
-    public String getType() {
-        return type;
+    @Override
+    public String toString() {
+        return "HardDisk: " + type + ", Size: " + size;
     }
 
 }
