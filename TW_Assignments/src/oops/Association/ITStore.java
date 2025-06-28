@@ -2,7 +2,7 @@ package oops.Association;
 
 import java.util.ArrayList;
 import java.util.List;
-public class ITStrore {
+public class ITStore {
     private static List<Laptop> laptopInventory = new ArrayList<>();
 
     public static void main(String[] args) {
