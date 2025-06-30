@@ -1,9 +1,9 @@
 package oops.polymorphism;
-
+import static java.lang.Math.*;
 public class Circle extends Shape {
 
     int radius;
-    float pi = 3.14f;
+    float pi = (float) PI;
     Circle(int radius){
         this.radius = radius;
     }
