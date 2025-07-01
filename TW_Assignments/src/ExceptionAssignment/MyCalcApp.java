@@ -10,6 +10,5 @@ public class MyCalcApp {
         System.out.print("Enter input : ");
         number = scanner.nextInt();
         System.out.println(calculator.caldouble(number));
-
     }
 }
