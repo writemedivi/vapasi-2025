@@ -1,12 +1,10 @@
-package ExceptionAssignment;
+class Calculator {
 
-class  Calculator {
-
-    double caldouble(int a){
-        if(a == 0){
+    double calDouble(int a) {
+        if (a == 0) {
             throw new MyArithException("Zero not allowed");
         }
-        if( a <0 ){
+        if (a < 0) {
             throw new MyArithException("negative not allowed");
         }
         return a;

@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TW_Assignments/TW_Assignments.iml" filepath="$PROJECT_DIR$/TW_Assignments/TW_Assignments.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thoughtworks.iml" filepath="$PROJECT_DIR$/thoughtworks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/association/association.iml" filepath="$PROJECT_DIR$/association/association.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exception/exception.iml" filepath="$PROJECT_DIR$/exception/exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multi-level-inheritance/multi-level-inheritance.iml" filepath="$PROJECT_DIR$/multi-level-inheritance/multi-level-inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polymorphism/polymorphism.iml" filepath="$PROJECT_DIR$/polymorphism/polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vapasi-2025.iml" filepath="$PROJECT_DIR$/vapasi-2025.iml" />
     </modules>
   </component>
 </project>

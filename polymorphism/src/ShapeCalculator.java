@@ -1,4 +1,3 @@
-package oops.polymorphism;
 
 public class ShapeCalculator {
     public static void main(String[] args) {
@@ -10,11 +9,11 @@ public class ShapeCalculator {
         displayShapeDetail(shape);
     }
 
-    private static void displayShapeDetail(Shape[] arrShape){
+    private static void displayShapeDetail(Shape[] arrShape) {
         for (Shape s : arrShape) {
             String shapeName = s.getClass().getSimpleName();
-            if(s instanceof Rectangle){
-                if(((Rectangle) s).isSquare){
+            if (s instanceof Rectangle) {
+                if (((Rectangle) s).isSquare) {
                     System.out.println("Rectangle is a Square");
                     shapeName = "Square";
                 }
