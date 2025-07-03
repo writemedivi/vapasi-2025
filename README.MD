@@ -7,6 +7,8 @@ This repository contains Java examples and exercises that cover core OOP concept
 ✅ Exception Handling  
 ✅ Multilevel Inheritance  
 ✅ Polymorphism
+✅ Multi Threading
+
 
 ---
 
@@ -27,9 +29,6 @@ This is a loosely coupled relationship where both entities can exist independent
 - A `Library` has a list of `Book` objects.
 - A `Student` can be associated with a `Department`.
 
-**File:**  
-`association/AssociationDemo.java`
-
 ---
 
 ### 2️⃣ Exception Handling
@@ -45,9 +44,6 @@ Exception handling allows a program to deal with unexpected events (errors) grac
 **Example Scenario:**
 - Throw `InvalidAgeException` if a user inputs age below 18 for voter registration.
 
-**File:**  
-`exception/CustomExceptionDemo.java`
-
 ---
 
 ### 3️⃣ Multilevel Inheritance
@@ -59,9 +55,6 @@ This creates a parent → child → grandchild chain.
 **Example Scenario:**
 - `GrandParent` → `Parent` → `Child`  
   Each level adds or overrides behavior from the previous.
-
-**File:**  
-`inheritance/MultilevelInheritanceDemo.java`
 
 ---
 
@@ -78,27 +71,4 @@ It includes:
 - A `Shape` class has a `draw()` method.
   - `Circle`, `Rectangle`, and `Triangle` each override `draw()` with their specific implementation.
 
-**File:**  
-`polymorphism/PolymorphismDemo.java`
-
 ---
-
-## 🚀 How to Run the Project
-
-Make sure Java (JDK 8 or above) is installed on your system.
-
-### 🔧 Compile and Run Each File Individually:
-
-```bash
-javac association/AssociationDemo.java
-java association.AssociationDemo
-
-javac exception/CustomExceptionDemo.java
-java exception.CustomExceptionDemo
-
-javac inheritance/MultilevelInheritanceDemo.java
-java inheritance.MultilevelInheritanceDemo
-
-javac polymorphism/PolymorphismDemo.java
-java polymorphism.PolymorphismDemo
-```
