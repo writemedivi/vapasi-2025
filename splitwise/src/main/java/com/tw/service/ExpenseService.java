@@ -4,23 +4,35 @@ import com.tw.bean.Expense;
 import com.tw.bean.Settlement;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 public class ExpenseService {
+    static final Logger LOGGER = Logger.getLogger(DisplayService.class.getName());
 
     public Map<String, Double> getBalanceSheet(List<Expense> expenses) {
+
         Map<String, Double> balances = new HashMap<>();
 
         for (Expense expense : expenses) {
-            double shareAmount = expense.getExpenseAmount() / expense.getExpenseSharedPersons().size();
+            List<String> participants = expense.getExpenseSharedPersons();
+
+            if (participants == null || participants.isEmpty()) {
+                LOGGER.severe("Expense must have at least one participant.");
+                throw new IllegalArgumentException("Expense must have at least one participant.");
+            }
+            double shareAmount = expense.getExpenseAmount() / participants.size();
 
             for (String person : expense.getExpenseSharedPersons()) {
-                if (!person.equals(expense.getExpensePaidBy())) {
-                    balances.put(person, balances.getOrDefault(person, 0.0) - shareAmount);
-                    balances.put(expense.getExpensePaidBy(), balances.getOrDefault(expense.getExpensePaidBy(), 0.0) + shareAmount);
-                }
+                balances.put(person, balances.getOrDefault(person, 0.0) - shareAmount);
             }
+
+            String paidBy = expense.getExpensePaidBy();
+            balances.put(paidBy, balances.getOrDefault(paidBy, 0.0) + expense.getExpenseAmount());
         }
+
         return balances;
+
+
     }
 
     public List<Settlement> sequentialSettleUp(List<Expense> expenses) {
@@ -30,6 +42,10 @@ public class ExpenseService {
             String paidBy = expense.getExpensePaidBy();
             double amount = expense.getExpenseAmount();
             List<String> participants = expense.getExpenseSharedPersons();
+
+            if (participants == null || participants.isEmpty()) {
+                throw new IllegalArgumentException("Expense must have at least one participant.");
+            }
             double share = amount / participants.size();
 
             for (String person : participants) {
@@ -58,7 +74,7 @@ public class ExpenseService {
         while (!creditors.isEmpty() && !debtors.isEmpty()) {
             Map.Entry<String, Double> creditor = creditors.poll();
             Map.Entry<String, Double> debtor = debtors.poll();
-            if(creditor != null && debtor != null){
+            if (creditor != null && debtor != null) {
                 double amount = Math.min(creditor.getValue(), -debtor.getValue());
                 settlements.add(new Settlement(debtor.getKey(), creditor.getKey(), amount));
 
