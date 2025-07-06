@@ -7,27 +7,27 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class ExpenseService {
-    static final Logger LOGGER = Logger.getLogger(DisplayService.class.getName());
+    static final Logger LOGGER = Logger.getLogger(ExpenseService.class.getName());
 
     public Map<String, Double> getBalanceSheet(List<Expense> expenses) {
 
         Map<String, Double> balances = new HashMap<>();
 
         for (Expense expense : expenses) {
-            List<String> participants = expense.getExpenseSharedPersons();
+            List<String> participants = expense.expenseSharedPersons();
 
             if (participants == null || participants.isEmpty()) {
                 LOGGER.severe("Expense must have at least one participant.");
                 throw new IllegalArgumentException("Expense must have at least one participant.");
             }
-            double shareAmount = expense.getExpenseAmount() / participants.size();
+            double shareAmount = expense.expenseAmount() / participants.size();
 
-            for (String person : expense.getExpenseSharedPersons()) {
+            for (String person : expense.expenseSharedPersons()) {
                 balances.put(person, balances.getOrDefault(person, 0.0) - shareAmount);
             }
 
-            String paidBy = expense.getExpensePaidBy();
-            balances.put(paidBy, balances.getOrDefault(paidBy, 0.0) + expense.getExpenseAmount());
+            String paidBy = expense.expensePaidBy();
+            balances.put(paidBy, balances.getOrDefault(paidBy, 0.0) + expense.expenseAmount());
         }
 
         return balances;
@@ -39,9 +39,9 @@ public class ExpenseService {
         List<Settlement> settlements = new ArrayList<>();
 
         for (Expense expense : expenses) {
-            String paidBy = expense.getExpensePaidBy();
-            double amount = expense.getExpenseAmount();
-            List<String> participants = expense.getExpenseSharedPersons();
+            String paidBy = expense.expensePaidBy();
+            double amount = expense.expenseAmount();
+            List<String> participants = expense.expenseSharedPersons();
 
             if (participants == null || participants.isEmpty()) {
                 throw new IllegalArgumentException("Expense must have at least one participant.");

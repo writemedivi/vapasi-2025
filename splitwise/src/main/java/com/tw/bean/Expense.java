@@ -3,28 +3,7 @@ package com.tw.bean;
 import java.util.List;
 import java.util.Objects;
 
-public class Expense {
-    private final String expensePaidBy;
-    private final double expenseAmount;
-    private final List<String> expenseSharedPersons;
-
-    public Expense(String expensePaidBy, double expenseAmount, List<String> expenseSharedPersons) {
-        this.expensePaidBy = expensePaidBy;
-        this.expenseSharedPersons = expenseSharedPersons;
-        this.expenseAmount = expenseAmount;
-    }
-
-    public String getExpensePaidBy() {
-        return expensePaidBy;
-    }
-
-    public List<String> getExpenseSharedPersons() {
-        return expenseSharedPersons;
-    }
-
-    public double getExpenseAmount() {
-        return expenseAmount;
-    }
+public record Expense(String expensePaidBy, double expenseAmount, List<String> expenseSharedPersons) {
 
     @Override
     public boolean equals(Object o) {
