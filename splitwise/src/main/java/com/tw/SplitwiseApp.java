@@ -15,6 +15,9 @@ import java.util.logging.Logger;
 
 public class SplitwiseApp {
     static final Logger LOGGER = Logger.getLogger(SplitwiseApp.class.getName());
+    private static final String LABEL_EXPENSES = "Expenses:";
+    private static final String LABEL_SEQUENTIAL_SETTLEMENT = "Sequential Settle-up";
+    private static final String LABEL_SIMPLIFIED_SETTLEMENT = "Simplified Debt Settle-up";
 
     public static void main(String[] args) {
         ExpenseService expenseService = new ExpenseService();
@@ -23,17 +26,17 @@ public class SplitwiseApp {
 
         try (InputStream inputStream = SplitwiseApp.class.getClassLoader().getResourceAsStream("transactionDetails.txt")) {
             if (inputStream == null) {
-                throw new FileNotFoundException("transactionDetails.txt not found in resources directory.");
+                throw new FileNotFoundException("transactionDetails.txt file not found in resources directory.");
             }
             List<Expense> expenses = expenseParser.parse(inputStream);
-            displayService.displayExpense("Expenses : ", expenses);
+            displayService.displayExpense(LABEL_EXPENSES, expenses);
 
             List<Settlement> sequentialSettleUp = expenseService.sequentialSettleUp(expenses);
-            displayService.displaySettlement("Sequential Settle-up", sequentialSettleUp);
+            displayService.displaySettlement(LABEL_SEQUENTIAL_SETTLEMENT, sequentialSettleUp);
 
             Map<String, Double> balanceSheet = expenseService.getBalanceSheet(expenses);
             List<Settlement> simplifiedSettleUp = expenseService.simplifiedSettleUp(balanceSheet);
-            displayService.displaySettlement("Simplified Debt Settle-up", simplifiedSettleUp);
+            displayService.displaySettlement(LABEL_SIMPLIFIED_SETTLEMENT, simplifiedSettleUp);
 
         } catch (Exception exception) {
             LOGGER.severe("Exception Occured : " + exception.getMessage());

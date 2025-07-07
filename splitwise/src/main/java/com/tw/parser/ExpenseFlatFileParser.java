@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class ExpenseFlatFileParser implements ExpenseParser {
     static final Logger LOGGER = Logger.getLogger(ExpenseFlatFileParser.class.getName());
+    private static final int TRANSACTION_REQUIRED_LENGTH = 3;
 
     public List<Expense> parse(InputStream inputStream) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -28,7 +29,7 @@ public class ExpenseFlatFileParser implements ExpenseParser {
 
         try {
             String[] parts = line.split(" for ");
-            if (parts.length != 3) {
+            if (parts.length != TRANSACTION_REQUIRED_LENGTH) {
                 throw new RuntimeException("Skipping malformed line: " + line);
             }
             String[] spentParts = parts[0].split(" ");

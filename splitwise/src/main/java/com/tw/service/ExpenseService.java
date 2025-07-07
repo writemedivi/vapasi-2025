@@ -8,6 +8,10 @@ import java.util.logging.Logger;
 
 public class ExpenseService {
     static final Logger LOGGER = Logger.getLogger(ExpenseService.class.getName());
+    private static final double ROUNDING_SCALE = 100.0;
+    private static final double MINIMUM_SETTLEMENT_THRESHOLD = 0.01;
+    private static final double DEFAULT_BALANCE = 0.0;
+    private static final double ZERO_THRESHOLD = 0.0;
 
     public Map<String, Double> getBalanceSheet(List<Expense> expenses) {
 
@@ -23,11 +27,11 @@ public class ExpenseService {
             double shareAmount = expense.expenseAmount() / participants.size();
 
             for (String person : expense.expenseSharedPersons()) {
-                balances.put(person, balances.getOrDefault(person, 0.0) - shareAmount);
+                balances.put(person, balances.getOrDefault(person, DEFAULT_BALANCE) - shareAmount);
             }
 
             String paidBy = expense.expensePaidBy();
-            balances.put(paidBy, balances.getOrDefault(paidBy, 0.0) + expense.expenseAmount());
+            balances.put(paidBy, balances.getOrDefault(paidBy, DEFAULT_BALANCE) + expense.expenseAmount());
         }
 
         return balances;
@@ -62,11 +66,12 @@ public class ExpenseService {
         PriorityQueue<Map.Entry<String, Double>> debtors = new PriorityQueue<>(Map.Entry.comparingByValue());
         List<Settlement> settlements = new ArrayList<>();
 
+
         for (Map.Entry<String, Double> entry : balances.entrySet()) {
-            double rounded = Math.round(entry.getValue() * 100.0) / 100.0;
-            if (rounded > 0) {
+            double rounded = Math.round(entry.getValue() * ROUNDING_SCALE) / ROUNDING_SCALE;
+            if (rounded > ZERO_THRESHOLD) {
                 creditors.add(new AbstractMap.SimpleEntry<>(entry.getKey(), rounded));
-            } else if (rounded < 0) {
+            } else if (rounded < ZERO_THRESHOLD) {
                 debtors.add(new AbstractMap.SimpleEntry<>(entry.getKey(), rounded));
             }
         }
@@ -80,10 +85,10 @@ public class ExpenseService {
 
                 double remainingCreditor = creditor.getValue() - amount;
                 double remainingDebtor = debtor.getValue() + amount;
-                if (Math.abs(remainingCreditor) > 0.01) {
+                if (Math.abs(remainingCreditor) > MINIMUM_SETTLEMENT_THRESHOLD) {
                     creditors.add(new AbstractMap.SimpleEntry<>(creditor.getKey(), remainingCreditor));
                 }
-                if (Math.abs(remainingDebtor) > 0.01) {
+                if (Math.abs(remainingDebtor) > MINIMUM_SETTLEMENT_THRESHOLD) {
                     debtors.add(new AbstractMap.SimpleEntry<>(debtor.getKey(), remainingDebtor));
                 }
 
